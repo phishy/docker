@@ -1,0 +1,13 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+build:
+  docker:
+    web: Dockerfile.heroku
+  config:
+    CALENDSO_ENCRYPTION_KEY: secret
+    NEXTAUTH_SECRET: secret
+    NEXTAUTH_URL: http://localhost:3000
+    NEXT_PUBLIC_WEBAPP_URL: http://localhost:3000
+    PGSSLMODE: no-verify
